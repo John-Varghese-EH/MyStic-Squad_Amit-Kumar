@@ -1,1 +1,1 @@
-John Varghese , Rishabh nirmalkar , parthista beniwal , amit kumar
+John Varghese , Rishabh Nirmalkar , parthista beniwal , amit kumar
