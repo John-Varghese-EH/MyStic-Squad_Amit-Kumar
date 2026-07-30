@@ -6,7 +6,6 @@
 #include "FirebaseSync.h"
 
 // Global Instances & Queues
-volatile int currentBlinkThreshold = DEFAULT_BLINK_THRESHOLD;
 volatile int currentFlexThreshold = DEFAULT_FLEX_THRESHOLD;
 volatile int currentDebounceMs = DEFAULT_DEBOUNCE_MS;
 volatile int currentDoubleBlinkWindowMs = DEFAULT_DOUBLE_BLINK_WINDOW_MS;
@@ -15,6 +14,7 @@ QueueHandle_t wsEventQueue;
 QueueHandle_t firebaseQueue;
 
 // Setup (Runs on Core 1 once at boot)
+
 void setup() {
     Serial.begin(115200);
     Serial.println("Starting EchoGaze v" ECHOGAZE_VERSION "...");
@@ -29,7 +29,7 @@ void setup() {
     // Start Task Modules
     setupNetworkTask();  // Core 0: WiFi, WebSocket, WebServer
     setupFirebaseTask(); // Core 0: HTTPS Firebase Sync
-    setupSensorTask();   // Core 1: IR Sensor & Demodulation
+    setupSensorTask();   // Core 1: Digital IR Sensor IR Sensor & Demodulation Button
 
     // Setup completes, delete default Arduino loop task
     vTaskDelete(NULL);
